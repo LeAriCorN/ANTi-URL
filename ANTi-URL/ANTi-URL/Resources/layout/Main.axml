@@ -13,16 +13,16 @@
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="199.0dp"
-        android:id="@+id/editText1" />
+        android:id="@+id/editor" />
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/gotit" />
     <TextView
-        android:text="Will Change"
+        android:text="URL 형식에 맞으면 라벨이 바뀝니다"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:id="@+id/changelabel" />
 </LinearLayout>

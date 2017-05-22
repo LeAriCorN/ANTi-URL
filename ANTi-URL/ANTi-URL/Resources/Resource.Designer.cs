@@ -60,17 +60,17 @@ namespace ANTi_URL
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int button1 = 2131034114;
+			// aapt resource value: 0x7f050003
+			public const int changelabel = 2131034115;
 			
 			// aapt resource value: 0x7f050001
-			public const int editText1 = 2131034113;
+			public const int editor = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int gotit = 2131034114;
 			
 			// aapt resource value: 0x7f050000
 			public const int textView1 = 2131034112;
-			
-			// aapt resource value: 0x7f050003
-			public const int textView2 = 2131034115;
 			
 			static Id()
 			{
