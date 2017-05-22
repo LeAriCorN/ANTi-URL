@@ -10,6 +10,7 @@ namespace ANTi_URL
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            mtoast = Toast.MakeText(this, "", ToastLength.Short);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -33,7 +34,8 @@ namespace ANTi_URL
             }
             else
             {
-                Toast.MakeText(this, "URL 형식에 맞지 않습니다", ToastLength.Long).Show();
+                mtoast.SetText("올바르지 않은 URL 입니다");
+                mtoast.Show();
             }
 
 
@@ -45,6 +47,8 @@ namespace ANTi_URL
         {
             return Android.Util.Patterns.WebUrl.Matcher(source).Matches();
         }
+
+        private static Toast mtoast;
     }
 }
      
