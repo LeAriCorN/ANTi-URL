@@ -8,17 +8,34 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/textView1"
+        android:gravity="center" />
     <EditText
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="199.0dp"
         android:id="@+id/editor" />
     <Button
-        android:text="Button"
+        android:text="Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gotit" />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_setting_urlloading"
+        android:text="URL 입력방식을 설정합니다. (자동/수동)" />
+    <TextView
+        android:text="URL을 수동으로 입력합니다"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtV_switch_urlloading" />
+    <Button
+        android:text="Setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_goto_setting" />
     <TextView
         android:text="URL 형식에 맞으면 라벨이 바뀝니다"
         android:textAppearance="?android:attr/textAppearanceLarge"

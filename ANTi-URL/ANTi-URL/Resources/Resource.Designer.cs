@@ -60,8 +60,11 @@ namespace ANTi_URL
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050003
-			public const int changelabel = 2131034115;
+			// aapt resource value: 0x7f050005
+			public const int btn_goto_setting = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int changelabel = 2131034118;
 			
 			// aapt resource value: 0x7f050001
 			public const int editor = 2131034113;
@@ -69,8 +72,20 @@ namespace ANTi_URL
 			// aapt resource value: 0x7f050002
 			public const int gotit = 2131034114;
 			
+			// aapt resource value: 0x7f050008
+			public const int layout_listview = 2131034120;
+			
+			// aapt resource value: 0x7f050007
+			public const int linearLayout1 = 2131034119;
+			
+			// aapt resource value: 0x7f050003
+			public const int switch_setting_urlloading = 2131034115;
+			
 			// aapt resource value: 0x7f050000
 			public const int textView1 = 2131034112;
+			
+			// aapt resource value: 0x7f050004
+			public const int txtV_switch_urlloading = 2131034116;
 			
 			static Id()
 			{
@@ -87,6 +102,9 @@ namespace ANTi_URL
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Setting = 2130903041;
 			
 			static Layout()
 			{
