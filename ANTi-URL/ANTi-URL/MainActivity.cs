@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace ANTi_URL
 {
-    [Activity(Label = "ANTi_URL", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "ANTi_URL")]
     public class MainActivity : Activity
     {
         int switch_urlcopy = 0;
