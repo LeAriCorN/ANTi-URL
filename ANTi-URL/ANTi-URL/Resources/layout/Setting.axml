@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
+    android:background="#294d7f"
     android:id="@+id/linearLayout1">
     <ListView
         android:minWidth="25px"

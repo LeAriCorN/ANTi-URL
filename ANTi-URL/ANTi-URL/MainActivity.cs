@@ -12,66 +12,65 @@ namespace ANTi_URL
     [Activity(Label = "ANTi_URL")]
     public class MainActivity : Activity
     {
-        int switch_urlcopy = 0;
+        bool switch_urlcopy = true;
         
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             mtoast = Toast.MakeText(this, "", ToastLength.Short);
-
-            // Set our view from the "main" layout resource
+            
             SetContentView(Resource.Layout.Main);
             ActionBar.Hide();
 
-            if (switch_urlcopy == 1)
+            if (switch_urlcopy == true)
             {
                 clipboardautocopy(); //클립보드 복붙 함수
             }
 
             Button button = FindViewById<Button>(Resource.Id.gotit);
             Button btn_goto_setting = FindViewById<Button>(Resource.Id.btn_goto_setting);
-            Switch seturlloading = FindViewById<Switch>(Resource.Id.switch_setting_urlloading);
+            //Switch seturlloading = FindViewById<Switch>(Resource.Id.switch_setting_urlloading);
 
          
             button.Click += changedownlabel;
             btn_goto_setting.Click += Btn_goto_setting_Click;
-            seturlloading.CheckedChange += urlloadingsetting;
+            //seturlloading.CheckedChange += urlloadingsetting;
 
 
         }
 
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
-        { 
-            SetContentView(Resource.Layout.Setting);
+        {
+            StartActivity(typeof(Setting));
         }
 
         private void urlloadingsetting(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
-            TextView txtvurl = FindViewById<TextView>(Resource.Id.txtV_switch_urlloading);
+            //TextView txtvurl = FindViewById<TextView>(Resource.Id.txtV_switch_urlloading);
 
             bool isChecked = e.IsChecked;
             if (isChecked)
             {
-                txtvurl.Text = "URL을 자동으로 입력합니다";
-                switch_urlcopy = 0;
+                //txtvurl.Text = "URL을 자동으로 입력합니다";
+                switch_urlcopy = true;
             }
             else
             {
-                txtvurl.Text = "URL을 수동으로 입력합니다";
-                switch_urlcopy = 1;
+                //txtvurl.Text = "URL을 수동으로 입력합니다";
+                switch_urlcopy = false;
             }
         }
 
         private void changedownlabel(object sender, System.EventArgs e)
         {
             EditText upeditor = FindViewById<EditText>(Resource.Id.editor);
-            TextView showlabel = FindViewById<TextView>(Resource.Id.changelabel);
+            //TextView showlabel = FindViewById<TextView>(Resource.Id.changelabel);
 
             string res = upeditor.Text;
 
             if (checkkurl(res) == true)
             {
-                showlabel.Text = res.ToString();
+                //showlabel.Text = res.ToString();
             }
             else
             {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
 using Android.App;
 using Android.Content;
@@ -13,16 +12,16 @@ using Android.Widget;
 
 namespace ANTi_URL
 {
-    [Activity(Label = "ANTi-URL" , MainLauncher = true, Theme="@style/Theme.Splash", NoHistory=true, Icon="@drawable/icon")]
-    public class SplashScreen : Activity
+    [Activity(Label = "설정", Icon = "@drawable/icon")]
+    public class Setting : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            SetContentView(Resource.Layout.Setting);
 
-            Thread.Sleep(1500);
-            StartActivity(typeof(MainActivity));
-            Finish();
+
+
         }
     }
 }

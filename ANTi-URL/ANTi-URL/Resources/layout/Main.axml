@@ -2,38 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:text="ANTi-URL"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+    android:layout_height="match_parent"
+    android:background="#294d7f">
+    <ImageView
+        android:src="@drawable/logo_v2"
         android:layout_width="match_parent"
-        android:layout_weight="20"
-        android:layout_height="0dp"
-        android:id="@+id/textView1"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="25sp"/>
+        android:layout_height="150dp"
+        android:id="@+id/imageView1" />
     <EditText
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:textColor="#98ff4c"
-        android:background="#efefef"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="100dp"
+        android:textColor="#FEFEFE"
+        android:background="#f7f7f7"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:id="@+id/editor" />
     <Button
         android:text="Search"
         android:layout_width="match_parent"
-        android:layout_weight="15"
-        android:layout_height="0dp"
-        android:background="#4c98ff"
+        android:layout_height="50dp"
+        android:background="#142740"
         android:textColor="#ffffff"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="32sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="24sp"
         android:id="@+id/gotit" />
-    <Switch
+<!--    <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/switch_setting_urlloading"
@@ -43,16 +39,34 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtV_switch_urlloading" />
-    <Button
-        android:text="Setting"
+        android:id="@+id/txtV_switch_urlloading" />-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_goto_setting" />
-    <TextView
-        android:text="URL 형식에 맞으면 라벨이 바뀝니다"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/changelabel" />
+        android:layout_marginTop="100dp"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="설정"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="50"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:background="#142740"
+            android:textSize="24sp"
+            android:id="@+id/btn_goto_setting" />
+        <Button
+            android:text="과거 내역"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="50"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            android:background="#142740"
+            android:textSize="24sp"
+            android:id="@+id/button1" />
+    </LinearLayout>
 </LinearLayout>
