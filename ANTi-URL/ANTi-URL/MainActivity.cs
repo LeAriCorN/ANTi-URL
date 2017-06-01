@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+
 using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using System.Collections.Generic;
 
 namespace ANTi_URL
 {
@@ -22,8 +24,7 @@ namespace ANTi_URL
             ActionBar.Hide();
 
             mtoast = Toast.MakeText(this, "", ToastLength.Short);
-            
-            
+                       
 
             if (switch_urlcopy == true)
             {
@@ -80,7 +81,28 @@ namespace ANTi_URL
 
             if (checkkurl(res) == true)
             {
-                //showlabel.Text = res.ToString();
+                ProgressDialog progress = new ProgressDialog(this);
+                progress.Indeterminate = true;
+                progress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                progress.SetMessage("URL을 분석중입니다");
+                progress.SetCancelable(false);
+                progress.Progress = 0;
+                progress.Max = 100;
+                progress.Show();
+
+                int pg = 0;
+
+                new Thread(new ThreadStart(delegate
+                {
+                    while (pg < 100)
+                    {
+                        pg += 30;
+                        progress.Progress = pg;
+                        Thread.Sleep(1000);
+                    }
+                    RunOnUiThread(() => { progress.Hide(); });
+
+                })).Start();
             }
             else
             {
