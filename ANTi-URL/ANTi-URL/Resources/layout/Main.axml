@@ -8,7 +8,7 @@
         android:src="@drawable/logo_v2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/imageView1" />
+        android:id="@+id/img_main_logo" />
     <EditText
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:id="@+id/editor" />
+        android:id="@+id/txt_input_url" />
     <Button
         android:text="Search"
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textSize="24sp"
-        android:id="@+id/gotit" />
+        android:id="@+id/btn_launch_vt" />
 <!--    <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +67,6 @@
             android:layout_marginRight="30dp"
             android:background="#142740"
             android:textSize="24sp"
-            android:id="@+id/button1" />
+            android:id="@+id/btn_goto_history" />
     </LinearLayout>
 </LinearLayout>

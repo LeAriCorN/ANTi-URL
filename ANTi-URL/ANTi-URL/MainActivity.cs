@@ -17,23 +17,28 @@ namespace ANTi_URL
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            mtoast = Toast.MakeText(this, "", ToastLength.Short);
-            
+
             SetContentView(Resource.Layout.Main);
             ActionBar.Hide();
+
+            mtoast = Toast.MakeText(this, "", ToastLength.Short);
+            
+            
 
             if (switch_urlcopy == true)
             {
                 clipboardautocopy(); //클립보드 복붙 함수
             }
 
-            Button button = FindViewById<Button>(Resource.Id.gotit);
+            Button btn_launch_vt = FindViewById<Button>(Resource.Id.btn_launch_vt);
             Button btn_goto_setting = FindViewById<Button>(Resource.Id.btn_goto_setting);
+            Button btn_goto_history = FindViewById<Button>(Resource.Id.btn_goto_history);
             //Switch seturlloading = FindViewById<Switch>(Resource.Id.switch_setting_urlloading);
 
          
-            button.Click += changedownlabel;
+            btn_launch_vt.Click += changedownlabel;
             btn_goto_setting.Click += Btn_goto_setting_Click;
+            btn_goto_history.Click += Btn_goto_history_Click;
             //seturlloading.CheckedChange += urlloadingsetting;
 
 
@@ -42,6 +47,11 @@ namespace ANTi_URL
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
         {
             StartActivity(typeof(Setting));
+        }
+
+        private void Btn_goto_history_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(History));
         }
 
         private void urlloadingsetting(object sender, CompoundButton.CheckedChangeEventArgs e)
@@ -63,7 +73,7 @@ namespace ANTi_URL
 
         private void changedownlabel(object sender, System.EventArgs e)
         {
-            EditText upeditor = FindViewById<EditText>(Resource.Id.editor);
+            EditText upeditor = FindViewById<EditText>(Resource.Id.txt_input_url);
             //TextView showlabel = FindViewById<TextView>(Resource.Id.changelabel);
 
             string res = upeditor.Text;
@@ -87,7 +97,7 @@ namespace ANTi_URL
         
         private void clipboardautocopy()
         {
-            EditText upeditor = FindViewById<EditText>(Resource.Id.editor);
+            EditText upeditor = FindViewById<EditText>(Resource.Id.txt_input_url);
             var clipboard = (Android.Content.ClipboardManager)GetSystemService(ClipboardService);
 
             var pData = "";
