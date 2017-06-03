@@ -66,29 +66,35 @@ namespace ANTi_URL
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060006
-			public const int btn_goto_history = 2131099654;
-			
-			// aapt resource value: 0x7f060005
-			public const int btn_goto_setting = 2131099653;
-			
-			// aapt resource value: 0x7f060003
-			public const int btn_launch_vt = 2131099651;
-			
-			// aapt resource value: 0x7f060001
-			public const int img_main_logo = 2131099649;
-			
-			// aapt resource value: 0x7f060004
-			public const int linearLayout1 = 2131099652;
-			
-			// aapt resource value: 0x7f060000
-			public const int listView1 = 2131099648;
+			// aapt resource value: 0x7f060008
+			public const int btn_goto_history = 2131099656;
 			
 			// aapt resource value: 0x7f060007
-			public const int textView1 = 2131099655;
+			public const int btn_goto_setting = 2131099655;
+			
+			// aapt resource value: 0x7f060005
+			public const int btn_launch_vt = 2131099653;
+			
+			// aapt resource value: 0x7f060001
+			public const int goto_app = 2131099649;
+			
+			// aapt resource value: 0x7f060003
+			public const int img_main_logo = 2131099651;
+			
+			// aapt resource value: 0x7f060006
+			public const int linearLayout1 = 2131099654;
 			
 			// aapt resource value: 0x7f060002
-			public const int txt_input_url = 2131099650;
+			public const int listView1 = 2131099650;
+			
+			// aapt resource value: 0x7f060000
+			public const int relativeLayout1 = 2131099648;
+			
+			// aapt resource value: 0x7f060009
+			public const int textView1 = 2131099657;
+			
+			// aapt resource value: 0x7f060004
+			public const int txt_input_url = 2131099652;
 			
 			static Id()
 			{
@@ -104,13 +110,16 @@ namespace ANTi_URL
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int History = 2130903040;
+			public const int Clipboard_Popup = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int History = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Setting = 2130903042;
+			public const int Main = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Setting = 2130903043;
 			
 			static Layout()
 			{

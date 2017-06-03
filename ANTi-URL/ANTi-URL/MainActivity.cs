@@ -50,8 +50,11 @@ namespace ANTi_URL
 
         private void test(object sender, EventArgs e)
         {
-            mtoast.SetText("URL을 자동으로 붙여넣겠습니까?");
-            mtoast.Show();
+            //mtoast.SetText("URL을 자동으로 붙여넣겠습니까?");
+            //mtoast.Show();
+
+            StartActivity(typeof(Go2App));
+
         }
 
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
@@ -106,7 +109,6 @@ namespace ANTi_URL
                     {
                         pg += 30;
                         progress.Progress = pg;
-                        Thread.Sleep(1000);
                     }
                     RunOnUiThread(() => { progress.Hide(); });
 
@@ -114,7 +116,7 @@ namespace ANTi_URL
             }
             else
             {
-                mtoast.SetText("올바르지 않은 URL 입니다");
+                mtoast.SetText("잘못된 URL을 입력했습니다");
                 mtoast.Show();
             }
 
@@ -155,6 +157,11 @@ namespace ANTi_URL
                 {
                     upeditor.Text = pData.ToString();
                     mtoast.SetText("URL을 자동으로 입력했습니다");
+                    mtoast.Show();
+                }
+                else
+                {
+                    mtoast.SetText("잘못된 URL을 입력했습니다");
                     mtoast.Show();
                 }
             }
