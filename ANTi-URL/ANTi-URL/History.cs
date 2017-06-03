@@ -18,7 +18,7 @@ namespace ANTi_URL
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Setting);
+            SetContentView(Resource.Layout.History);
         }
     }
 }

@@ -24,6 +24,9 @@ namespace ANTi_URL
             ActionBar.Hide();
 
             mtoast = Toast.MakeText(this, "", ToastLength.Short);
+
+            ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
+            clip.PrimaryClipChanged += test;
                        
 
             if (switch_urlcopy == true)
@@ -36,13 +39,19 @@ namespace ANTi_URL
             Button btn_goto_history = FindViewById<Button>(Resource.Id.btn_goto_history);
             //Switch seturlloading = FindViewById<Switch>(Resource.Id.switch_setting_urlloading);
 
-         
+                     
             btn_launch_vt.Click += changedownlabel;
             btn_goto_setting.Click += Btn_goto_setting_Click;
             btn_goto_history.Click += Btn_goto_history_Click;
             //seturlloading.CheckedChange += urlloadingsetting;
 
 
+        }
+
+        private void test(object sender, EventArgs e)
+        {
+            mtoast.SetText("URL을 자동으로 붙여넣겠습니까?");
+            mtoast.Show();
         }
 
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
@@ -75,7 +84,6 @@ namespace ANTi_URL
         private void changedownlabel(object sender, System.EventArgs e)
         {
             EditText upeditor = FindViewById<EditText>(Resource.Id.txt_input_url);
-            //TextView showlabel = FindViewById<TextView>(Resource.Id.changelabel);
 
             string res = upeditor.Text;
 
@@ -153,6 +161,7 @@ namespace ANTi_URL
         }
 
         private static Toast mtoast;
+        
     }
 }
      

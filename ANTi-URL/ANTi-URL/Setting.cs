@@ -19,9 +19,6 @@ namespace ANTi_URL
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Setting);
-
-
-
         }
     }
 }
