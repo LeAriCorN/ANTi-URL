@@ -12,13 +12,17 @@ using Android.Widget;
 
 namespace ANTi_URL
 {
-    [Activity(Label = "과거 내역", Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/noActionbar", Icon = "@drawable/icon")]
     public class History : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.History);
+            var tolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(tolbar);
+            ActionBar.Title = "내 곁에 남아줄래";
+            //ActionBar.SetIcon(Resource.Drawable.icon);
         }
     }
 }

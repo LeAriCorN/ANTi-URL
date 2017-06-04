@@ -7,6 +7,9 @@
     android:minHeight="25px"
     android:background="#f7f7f7"
     android:id="@+id/linearLayout1">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/Toolbar" />
     <TextView
         android:text="아 왜 안되고 난리여 난리는"
         android:textAppearance="?android:attr/textAppearanceLarge"

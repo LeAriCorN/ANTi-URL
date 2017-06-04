@@ -4,5 +4,17 @@
     <item name="android:windowBackground">@drawable/splash</item>
     <item name="android:windowNoTitle">true</item>    
   </style>
-
+  <style name="CustomActionBar" parent="@android:style/Theme.Holo.Light">
+    <item name="android:actionBarStyle">@style/cActionBar</item>
+  </style>
+  <style name="cActionBar"
+         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <item name="android:background">#142740</item>
+  </style>
+  <style name="noActionbar" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:colorPrimary">#142740</item>
+    <item name="android:textColorPrimary">#f7f7f7</item>
+  </style>
 </resources>
