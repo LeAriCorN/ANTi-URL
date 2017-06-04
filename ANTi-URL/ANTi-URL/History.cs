@@ -21,8 +21,19 @@ namespace ANTi_URL
             SetContentView(Resource.Layout.History);
             var tolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(tolbar);
-            ActionBar.Title = "내 곁에 남아줄래";
-            //ActionBar.SetIcon(Resource.Drawable.icon);
+            ActionBar.Title = "과거 내역";
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            ActionBar.SetHomeButtonEnabled(true);
+            ActionBar.SetLogo(Resource.Drawable.icon);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                Finish();
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

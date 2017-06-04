@@ -11,10 +11,14 @@
          parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
     <item name="android:background">#142740</item>
   </style>
-  <style name="noActionbar" parent="@android:style/Theme.Material.Light.DarkActionBar">
+  <style name="noActionbar" parent="@android:style/Theme.Material">
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowActionBar">false</item>
     <item name="android:colorPrimary">#142740</item>
-    <item name="android:textColorPrimary">#f7f7f7</item>
+    <item name="android:colorAccent">#400000</item>
+  </style>
+  <style name="deafult" parent="@android:style/Theme.Material">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
   </style>
 </resources>

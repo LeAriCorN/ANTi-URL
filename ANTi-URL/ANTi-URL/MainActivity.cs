@@ -11,7 +11,7 @@ using Android.OS;
 
 namespace ANTi_URL
 {
-    [Activity(Label = "ANTi_URL")]
+    [Activity(Label = "Anti-URL")]
     public class MainActivity : Activity
     {
         bool switch_urlcopy = true;
@@ -109,6 +109,7 @@ namespace ANTi_URL
                     {
                         pg += 30;
                         progress.Progress = pg;
+                        Thread.Sleep(2000);
                     }
                     RunOnUiThread(() => { progress.Hide(); });
 

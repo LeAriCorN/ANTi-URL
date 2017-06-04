@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <PreferenceCategory
+          android:title="설정">
+    <SwitchPreference
+            android:key="checkbox_preference"
+            android:title="자동 URL 탐지 설정"
+            android:defaultValue="false"
+            android:summary="URL 자동 탐지 여부를 결정합니다"/>
+
+    <SwitchPreference
+            android:key="checkbox_preference"
+            android:title="Ah-Choo!"
+            android:summary="러블리즈가 부릅니다"
+            android:textColor="#294d7f">
+    </SwitchPreference>
+  </PreferenceCategory>
+  
+  <PreferenceCategory android:title="앱 정보">
+    <Preference
+      android:title="앱 버전"
+      android:summary="1.0.0"/>
+    <Preference
+      android:title="앱 소개"
+      android:summary="앱에 대한 소개"/>
+    <Preference
+      android:title="문의하기"
+      android:summary="개발자에게 메일 보내기"/>
+    <Preference
+      android:title="오픈소스 라이센스"/>
+    
+    
+  </PreferenceCategory>
+</PreferenceScreen>

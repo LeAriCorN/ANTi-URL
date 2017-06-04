@@ -87,11 +87,11 @@ namespace ANTi_URL
 			// aapt resource value: 0x7f060003
 			public const int listView1 = 2131099651;
 			
+			// aapt resource value: 0x7f06000a
+			public const int preferenceframe = 2131099658;
+			
 			// aapt resource value: 0x7f060000
 			public const int relativeLayout1 = 2131099648;
-			
-			// aapt resource value: 0x7f06000a
-			public const int textView1 = 2131099658;
 			
 			// aapt resource value: 0x7f060002
 			public const int toolbar = 2131099650;
@@ -125,7 +125,10 @@ namespace ANTi_URL
 			public const int Setting = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Toolbar = 2130903044;
+			public const int Setting_Preference = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int Toolbar = 2130903045;
 			
 			static Layout()
 			{
@@ -167,6 +170,9 @@ namespace ANTi_URL
 			
 			// aapt resource value: 0x7f050002
 			public const int cActionBar = 2131034114;
+			
+			// aapt resource value: 0x7f050004
+			public const int deafult = 2131034116;
 			
 			// aapt resource value: 0x7f050003
 			public const int noActionbar = 2131034115;

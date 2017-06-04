@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Preferences;
 
 namespace ANTi_URL
 {
@@ -19,10 +20,21 @@ namespace ANTi_URL
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Setting);
+            FragmentManager.BeginTransaction().Add(Resource.Id.preferenceframe, new Setting_Fragment()).Commit();
             var tolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(tolbar);
-            ActionBar.Title = "내 곁에 남아줄래";
-            //ActionBar.SetIcon(Resource.Drawable.icon);
+            ActionBar.Title = "설정";
+            ActionBar.SetDisplayShowHomeEnabled(true);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                Finish();
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

@@ -46,17 +46,20 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/linearLayout1">
         <Button
             android:text="설정"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="50"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="15dp"
             android:background="#142740"
             android:textSize="24sp"
+            android:elevation="8dp"
             android:id="@+id/btn_goto_setting" />
         <Button
             android:text="과거 내역"
@@ -65,8 +68,11 @@
             android:layout_weight="50"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="#142740"
             android:textSize="24sp"
+            android:elevation="8dp"
             android:id="@+id/btn_goto_history" />
     </LinearLayout>
 </LinearLayout>

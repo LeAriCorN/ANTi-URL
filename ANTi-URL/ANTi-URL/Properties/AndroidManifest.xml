@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ANTi_URL.ANTi_URL" android:installLocation="auto" android:versionCode="0" android:versionName="0.1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="App.Anti_URL" android:installLocation="auto" android:versionCode="1" android:versionName="1.0.0">
 	<uses-sdk android:minSdkVersion="16" />
-	<application android:label="ANTi_URL"></application>
+	<application android:label="Anti-URL" android:icon="@drawable/icon"></application>
 </manifest>
