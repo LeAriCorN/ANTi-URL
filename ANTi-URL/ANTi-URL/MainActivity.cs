@@ -37,7 +37,11 @@ namespace ANTi_URL
 
             ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
             clip.PrimaryClipChanged += clipchange;
-                       
+
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("bool", FileCreationMode.Private);
+            bool Clipboard_Listen = pref.GetBoolean("Clipboard_Listen",false);
+
+            
 
             if (switch_urlcopy == true)
             {

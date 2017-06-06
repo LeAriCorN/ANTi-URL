@@ -15,6 +15,9 @@ namespace ANTi_URL
 {
     public class Setting_Fragment : PreferenceFragment
     {
+        bool Clipboard_Listen = true;
+        bool Clipboard_Paste=true;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -39,7 +42,21 @@ namespace ANTi_URL
 
         private void ChangeURLPasteStatus(object sender, Preference.PreferenceChangeEventArgs e)
         {
-
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("bool", FileCreationMode.Private);
+            ISharedPreferencesEditor edit = pref.Edit();
+            
+            if (Clipboard_Listen)
+            {
+                edit.PutBoolean("Clipboard_Listen", false);
+                Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", false);
+                edit.Commit();
+            }
+            else
+            {
+                edit.PutBoolean("Clipboard_Listen", true);
+                Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", true);
+                edit.Commit();
+            }
         }
 
         private void ChangeURLListenerStatus(object sender, Preference.PreferenceChangeEventArgs e)
