@@ -26,15 +26,18 @@ namespace ANTi_URL
             ActionBar.Title = "설정";
             ActionBar.SetDisplayShowHomeEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
+            
         }
+
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Android.Resource.Id.Home)
+            switch (item.ItemId)
             {
-                Finish();
+                case Android.Resource.Id.Home : Finish(); return true;
             }
             return base.OnOptionsItemSelected(item);
         }
+        
     }
 }

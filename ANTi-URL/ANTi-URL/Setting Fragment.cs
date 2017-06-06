@@ -20,6 +20,57 @@ namespace ANTi_URL
             base.OnCreate(savedInstanceState);
             AddPreferencesFromResource(Resource.Layout.Setting_Preference);
 
+            SwitchPreference pClipboardlisten = (SwitchPreference)FindPreference("Clipboard_Listen");
+            SwitchPreference pClipboardPaste = (SwitchPreference)FindPreference("Clipboard_Paste");
+
+            Preference pAppintro = (Preference)FindPreference("App_intro");
+            Preference pFeedback = (Preference)FindPreference("Feedback");
+            Preference pOpensource = (Preference)FindPreference("OpenSource");
+
+            //pClipboardlisten.PreferenceClick += OnoffClipboardListen;
+            pClipboardlisten.PreferenceChange += ChangeURLListenerStatus;
+            pClipboardPaste.PreferenceChange += ChangeURLPasteStatus;
+
+            pAppintro.PreferenceClick += Go2AppIntro;
+            pFeedback.PreferenceClick += Go2Feedbackdialog;
+            pOpensource.PreferenceClick += Go2OpenSourceLicense;
+
+        }
+
+        private void ChangeURLPasteStatus(object sender, Preference.PreferenceChangeEventArgs e)
+        {
+
+        }
+
+        private void ChangeURLListenerStatus(object sender, Preference.PreferenceChangeEventArgs e)
+        {
+            
+        }
+
+        private void OnoffClipboardListen(object sender, Preference.PreferenceClickEventArgs e)
+        {
+            
+        }
+
+        private void Go2Feedbackdialog(object sender, Preference.PreferenceClickEventArgs e)
+        {
+            AlertDialog.Builder builder;
+            builder = new AlertDialog.Builder(this.Activity,Resource.Style.AlertDialogStyle);
+            builder.SetTitle("피드백은 이쪽으로");
+            builder.SetMessage("lazerbear77@gmail.com");
+            builder.SetCancelable(true);
+            builder.SetPositiveButton("확인",delegate{ });
+            builder.Show();
+        }
+
+        private void Go2AppIntro(object sender, Preference.PreferenceClickEventArgs e)
+        {
+            Activity.StartActivity(typeof(AppIntro));
+        }
+
+        private void Go2OpenSourceLicense(object sender, Preference.PreferenceClickEventArgs e)
+        {
+            Activity.StartActivity(typeof(OpenSource));
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

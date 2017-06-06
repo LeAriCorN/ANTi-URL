@@ -13,15 +13,16 @@ using Android.Widget;
 namespace ANTi_URL
 {
     [Activity(Theme = "@style/noActionbar", Icon = "@drawable/icon")]
-    public class History : Activity
+    class AppIntro : Activity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.History);
+            base.OnCreate(savedInstanceState);
+
+            SetContentView(Resource.Layout.AppIntro);
             var tolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(tolbar);
-            ActionBar.Title = "과거 내역";
+            ActionBar.Title = "앱 소개";
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
         }

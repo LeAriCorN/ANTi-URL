@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:background="#f7f7f7">
+    android:background="#294d7f">
     <include
-      android:id="@+id/toolbar"
-      layout="@layout/Toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/Toolbar" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
@@ -9,24 +10,33 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+//바이러스 토탈 api
+using VirusTotalNET;
+using VirusTotalNET.Objects;
+using VirusTotalNET.ResponseCodes;
+using VirusTotalNET.Results;
+
 namespace ANTi_URL
 {
     [Activity(Label = "Anti-URL")]
     public class MainActivity : Activity
     {
         bool switch_urlcopy = true;
-        
+        private static string ScanUrl;
+        static bool hasUrlBeenScannedBefore;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
             ActionBar.Hide();
-
+            
             mtoast = Toast.MakeText(this, "", ToastLength.Short);
 
+
             ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
-            clip.PrimaryClipChanged += test;
+            clip.PrimaryClipChanged += clipchange;
                        
 
             if (switch_urlcopy == true)
@@ -37,24 +47,18 @@ namespace ANTi_URL
             Button btn_launch_vt = FindViewById<Button>(Resource.Id.btn_launch_vt);
             Button btn_goto_setting = FindViewById<Button>(Resource.Id.btn_goto_setting);
             Button btn_goto_history = FindViewById<Button>(Resource.Id.btn_goto_history);
-            //Switch seturlloading = FindViewById<Switch>(Resource.Id.switch_setting_urlloading);
 
                      
-            btn_launch_vt.Click += changedownlabel;
+            btn_launch_vt.Click += analyzingURL;
             btn_goto_setting.Click += Btn_goto_setting_Click;
             btn_goto_history.Click += Btn_goto_history_Click;
-            //seturlloading.CheckedChange += urlloadingsetting;
 
 
         }
 
-        private void test(object sender, EventArgs e)
+        private void clipchange(object sender, EventArgs e)
         {
-            //mtoast.SetText("URL을 자동으로 붙여넣겠습니까?");
-            //mtoast.Show();
-
             StartActivity(typeof(Go2App));
-
         }
 
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
@@ -67,53 +71,35 @@ namespace ANTi_URL
             StartActivity(typeof(History));
         }
 
-        private void urlloadingsetting(object sender, CompoundButton.CheckedChangeEventArgs e)
-        {
-            //TextView txtvurl = FindViewById<TextView>(Resource.Id.txtV_switch_urlloading);
-
-            bool isChecked = e.IsChecked;
-            if (isChecked)
-            {
-                //txtvurl.Text = "URL을 자동으로 입력합니다";
-                switch_urlcopy = true;
-            }
-            else
-            {
-                //txtvurl.Text = "URL을 수동으로 입력합니다";
-                switch_urlcopy = false;
-            }
-        }
-
-        private void changedownlabel(object sender, System.EventArgs e)
+        private void analyzingURL(object sender, System.EventArgs e)
         {
             EditText upeditor = FindViewById<EditText>(Resource.Id.txt_input_url);
 
-            string res = upeditor.Text;
+            ScanUrl = upeditor.Text;
+            upeditor.Text = "";
 
-            if (checkkurl(res) == true)
+            if (chkurl(ScanUrl))
             {
-                ProgressDialog progress = new ProgressDialog(this);
+                ProgressDialog progress = new ProgressDialog(this,Resource.Style.AlertDialogStyle);
                 progress.Indeterminate = true;
-                progress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                //progress.SetProgressStyle(ProgressDialogStyle.Spinner);
                 progress.SetMessage("URL을 분석중입니다");
-                progress.SetCancelable(false);
-                progress.Progress = 0;
-                progress.Max = 100;
+                progress.SetCancelable(true);
                 progress.Show();
-
-                int pg = 0;
 
                 new Thread(new ThreadStart(delegate
                 {
-                    while (pg < 100)
-                    {
-                        pg += 30;
-                        progress.Progress = pg;
-                        Thread.Sleep(2000);
-                    }
+                    runAPI().Wait();
+
                     RunOnUiThread(() => { progress.Hide(); });
 
                 })).Start();
+
+                //new Thread(new ThreadStart(delegate
+                //{
+                //    runAPI().Wait();
+                //    RunOnUiThread(() => { progress.Hide(); });
+                //}));
             }
             else
             {
@@ -121,11 +107,6 @@ namespace ANTi_URL
                 mtoast.Show();
             }
 
-        }
-
-        private bool checkkurl(string source)
-        {
-            return Android.Util.Patterns.WebUrl.Matcher(source).Matches();
         }
         
         private void clipboardautocopy()
@@ -154,7 +135,7 @@ namespace ANTi_URL
                 // Gets the clipboard as text.
                 pData = item.Text;
                 
-                if (checkkurl(pData) == true)
+                if (chkurl(pData))
                 {
                     upeditor.Text = pData.ToString();
                     mtoast.SetText("URL을 자동으로 입력했습니다");
@@ -168,8 +149,78 @@ namespace ANTi_URL
             }
         }
 
+        private bool chkurl(string source)
+        {
+            return Android.Util.Patterns.WebUrl.Matcher(source).Matches();
+        }
+
         private static Toast mtoast;
-        
+
+
+        //API 부분
+        private static async Task runAPI()
+        {
+            VirusTotal virusTotal = new VirusTotal("e94b6cd868bd18f84b422f0e5e3e353b794410c0e7449af2d946e346b92c1662");
+
+            //https 사용
+            virusTotal.UseTLS = true;
+
+            UrlReport urlReport = await virusTotal.GetUrlReport(ScanUrl);
+
+            hasUrlBeenScannedBefore = urlReport.ResponseCode == ReportResponseCode.Present;
+
+            
+
+            //If the url has been scanned before, the results are embedded inside the report.
+            if (hasUrlBeenScannedBefore)
+            {
+                PrintScan(urlReport);
+            }
+            else
+            {
+                UrlScanResult urlResult = await virusTotal.ScanUrl(ScanUrl);
+                //PrintScan(urlResult);
+                await Task.Delay(2000);
+                
+            }
+        }
+
+        private static void PrintScan(UrlScanResult scanResult)
+        {
+            Console.WriteLine("Scan ID: " + scanResult.ScanId);
+            Console.WriteLine("Message: " + scanResult.VerboseMsg);
+            Console.WriteLine();
+        }
+
+        private static void PrintScan(ScanResult scanResult)
+        {
+            Console.WriteLine("Scan ID: " + scanResult.ScanId);
+            Console.WriteLine("Message: " + scanResult.VerboseMsg);
+            Console.WriteLine();
+        }
+
+        private static void PrintScan(UrlReport urlReport)
+        {
+            //Console.WriteLine("Scan ID: " + urlReport.ScanId);
+            //Console.WriteLine("Message: " + urlReport.VerboseMsg);
+
+            int fcnt = 0;
+            int total = urlReport.Total;
+
+            if (urlReport.ResponseCode == ReportResponseCode.Present)
+            {
+                foreach (KeyValuePair<string, ScanEngine> scan in urlReport.Scans)
+                {
+                    if (scan.Value.Detected)
+                    {
+                        fcnt += 1;
+                    }
+                }
+                mtoast.SetText("결과값 : "+fcnt+" / "+total);
+                mtoast.Show();
+            }
+        }
+
     }
 }
      

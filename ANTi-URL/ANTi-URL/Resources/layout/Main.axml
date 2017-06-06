@@ -18,7 +18,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:id="@+id/txt_input_url" />
+        android:id="@+id/txt_input_url"
+        android:hint="URL을 입력하세요"
+        android:textColorHint="#D0FBFF" />
     <Button
         android:text="Search"
         android:layout_width="match_parent"
@@ -29,17 +31,6 @@
         android:layout_marginRight="30dp"
         android:textSize="24sp"
         android:id="@+id/btn_launch_vt" />
-<!--    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch_setting_urlloading"
-        android:text="URL 입력방식을 설정합니다. (자동/수동)" />
-    <TextView
-        android:text="URL을 수동으로 입력합니다"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtV_switch_urlloading" />-->
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
