@@ -33,20 +33,18 @@ namespace ANTi_URL
             ActionBar.Hide();
             
             mtoast = Toast.MakeText(this, "", ToastLength.Short);
-
-
-            ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
-            clip.PrimaryClipChanged += clipchange;
-
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("bool", FileCreationMode.Private);
-            bool Clipboard_Listen = pref.GetBoolean("Clipboard_Listen",false);
-
             
 
-            if (switch_urlcopy == true)
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("1", FileCreationMode.Private);
+            int Clipboard_Listen = pref.GetInt("Clipboard_Listen", 0);
+
+            if (Clipboard_Listen==1)
             {
-                clipboardautocopy(); //클립보드 복붙 함수
+                ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
+                clip.PrimaryClipChanged += clipchange;
             }
+
+            clipboardautocopy(); //클립보드 복붙 함수
 
             Button btn_launch_vt = FindViewById<Button>(Resource.Id.btn_launch_vt);
             Button btn_goto_setting = FindViewById<Button>(Resource.Id.btn_goto_setting);

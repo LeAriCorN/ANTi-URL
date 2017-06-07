@@ -15,8 +15,7 @@ namespace ANTi_URL
 {
     public class Setting_Fragment : PreferenceFragment
     {
-        bool Clipboard_Listen = true;
-        bool Clipboard_Paste=true;
+        int Clipboard_Listen = 1;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,15 +23,14 @@ namespace ANTi_URL
             AddPreferencesFromResource(Resource.Layout.Setting_Preference);
 
             SwitchPreference pClipboardlisten = (SwitchPreference)FindPreference("Clipboard_Listen");
-            SwitchPreference pClipboardPaste = (SwitchPreference)FindPreference("Clipboard_Paste");
 
             Preference pAppintro = (Preference)FindPreference("App_intro");
             Preference pFeedback = (Preference)FindPreference("Feedback");
             Preference pOpensource = (Preference)FindPreference("OpenSource");
 
-            //pClipboardlisten.PreferenceClick += OnoffClipboardListen;
-            pClipboardlisten.PreferenceChange += ChangeURLListenerStatus;
-            pClipboardPaste.PreferenceChange += ChangeURLPasteStatus;
+            
+           // pClipboardlisten.PreferenceClick += OnoffClipboardListen;
+            pClipboardlisten.PreferenceChange += OnOffClipboardListen;
 
             pAppintro.PreferenceClick += Go2AppIntro;
             pFeedback.PreferenceClick += Go2Feedbackdialog;
@@ -40,28 +38,29 @@ namespace ANTi_URL
 
         }
 
-        private void ChangeURLPasteStatus(object sender, Preference.PreferenceChangeEventArgs e)
+        private void OnOffClipboardListen(object sender, Preference.PreferenceChangeEventArgs e)
         {
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("bool", FileCreationMode.Private);
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("1", FileCreationMode.Private);
             ISharedPreferencesEditor edit = pref.Edit();
+
             
-            if (Clipboard_Listen)
+
+            if (Clipboard_Listen==1)
             {
-                edit.PutBoolean("Clipboard_Listen", false);
-                Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", false);
-                edit.Commit();
+                //edit.PutBoolean("Clipboard_Listen", Clipboard_Listen);
+                edit.PutInt("Clipboard_Listen", Clipboard_Listen);
+                edit.Apply();
+                //Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", false);
+                Clipboard_Listen = 0;
             }
             else
             {
-                edit.PutBoolean("Clipboard_Listen", true);
-                Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", true);
-                edit.Commit();
+                //edit.PutBoolean("Clipboard_Listen", Clipboard_Listen);
+                edit.PutInt("Clipboard_Listen", Clipboard_Listen);
+                edit.Apply();
+                //Clipboard_Listen = pref.GetBoolean("Clipboard_Listen", true);
+                Clipboard_Listen = 1;
             }
-        }
-
-        private void ChangeURLListenerStatus(object sender, Preference.PreferenceChangeEventArgs e)
-        {
-            
         }
 
         private void OnoffClipboardListen(object sender, Preference.PreferenceClickEventArgs e)
