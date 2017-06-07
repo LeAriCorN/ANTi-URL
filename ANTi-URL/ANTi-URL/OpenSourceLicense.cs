@@ -13,7 +13,7 @@ using Android.Widget;
 namespace ANTi_URL
 {
     [Activity(Theme = "@style/noActionbar", Icon = "@drawable/icon")]
-    public class OpenSource : Activity
+    public class OpenSourceLicense : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

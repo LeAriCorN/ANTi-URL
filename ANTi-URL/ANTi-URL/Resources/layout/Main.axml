@@ -20,9 +20,9 @@
         android:layout_marginRight="30dp"
         android:id="@+id/txt_input_url"
         android:hint="URL을 입력하세요"
-        android:textColorHint="#D0FBFF" />
+        android:textColorHint="#999999" />
     <Button
-        android:text="Search"
+        android:text="SEARCH"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#142740"
@@ -31,16 +31,25 @@
         android:layout_marginRight="30dp"
         android:textSize="24sp"
         android:id="@+id/btn_launch_vt" />
+    <CheckBox
+        android:text="URL 자동 탐지"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#f7f7f7"
+        android:textSize="18dp"
+        android:id="@+id/chk_urllistener" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/linearLayout1">
         <Button
-            android:text="설정"
+            android:text="메뉴"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="50"

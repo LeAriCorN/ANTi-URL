@@ -66,29 +66,41 @@ namespace ANTi_URL
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f06000c
-			public const int btn_goto_history = 2131099660;
+			// aapt resource value: 0x7f060010
+			public const int btn_goto_history = 2131099664;
 			
-			// aapt resource value: 0x7f06000b
-			public const int btn_goto_setting = 2131099659;
+			// aapt resource value: 0x7f06000f
+			public const int btn_goto_setting = 2131099663;
+			
+			// aapt resource value: 0x7f06000c
+			public const int btn_launch_vt = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int chk_urllistener = 2131099661;
+			
+			// aapt resource value: 0x7f060008
+			public const int dbDel = 2131099656;
+			
+			// aapt resource value: 0x7f060007
+			public const int dbResult = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int dbUrl = 2131099654;
 			
 			// aapt resource value: 0x7f060009
-			public const int btn_launch_vt = 2131099657;
+			public const int db_list = 2131099657;
 			
 			// aapt resource value: 0x7f060005
 			public const int goto_app = 2131099653;
 			
-			// aapt resource value: 0x7f060007
-			public const int img_main_logo = 2131099655;
-			
 			// aapt resource value: 0x7f06000a
-			public const int linearLayout1 = 2131099658;
+			public const int img_main_logo = 2131099658;
 			
-			// aapt resource value: 0x7f060006
-			public const int listView1 = 2131099654;
+			// aapt resource value: 0x7f06000e
+			public const int linearLayout1 = 2131099662;
 			
-			// aapt resource value: 0x7f06000d
-			public const int preferenceframe = 2131099661;
+			// aapt resource value: 0x7f060011
+			public const int preferenceframe = 2131099665;
 			
 			// aapt resource value: 0x7f060004
 			public const int relativeLayout1 = 2131099652;
@@ -105,8 +117,8 @@ namespace ANTi_URL
 			// aapt resource value: 0x7f060000
 			public const int toolbar = 2131099648;
 			
-			// aapt resource value: 0x7f060008
-			public const int txt_input_url = 2131099656;
+			// aapt resource value: 0x7f06000b
+			public const int txt_input_url = 2131099659;
 			
 			static Id()
 			{
@@ -128,22 +140,25 @@ namespace ANTi_URL
 			public const int Clipboard_Popup = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int History = 2130903042;
+			public const int db_layout = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int History = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int OpenSource = 2130903044;
+			public const int Main = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int Setting = 2130903045;
+			public const int OpenSource = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Setting_Preference = 2130903046;
+			public const int Setting = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int Toolbar = 2130903047;
+			public const int Setting_Preference = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int Toolbar = 2130903048;
 			
 			static Layout()
 			{
