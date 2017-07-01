@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#294d7f">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/Toolbar" />
+    <TextView
+        android:text="Anti-URL을 소개합니다!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textColor="#5CFFC4" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <TextView
+            android:text="만나서 반갑습니다!\n\n이번에 만든 Anti-URL은 부적절한 어쩌고 저쩌고 아 개졸려 ㅠㅠㅠ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textColor="#f7f7f7" />
+    </ScrollView>
+</LinearLayout>

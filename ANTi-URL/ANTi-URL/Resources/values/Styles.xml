@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/splash</item>
+    <item name="android:windowNoTitle">true</item>    
+  </style>
+  <style name="CustomActionBar" parent="@android:style/Theme.Holo.Light">
+    <item name="android:actionBarStyle">@style/cActionBar</item>
+  </style>
+  <style name="cActionBar"
+         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <item name="android:background">#142740</item>
+  </style>
+  <style name="noActionbar" parent="@android:style/Theme.Material">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:colorPrimary">#142740</item>
+    <item name="android:colorAccent">#5CFFC4</item>
+  </style>
+  <style name="deafult" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+  </style>
+  <style name="AlertDialogStyle" parent="@android:style/Theme.Material.Dialog.Alert">
+    <item name="android:colorAccent">#5CFFC4</item>
+    <item name="android:textColorPrimary">#ffffff</item>
+    <item name="android:background">#294d7f</item>
+  </style>
+</resources>

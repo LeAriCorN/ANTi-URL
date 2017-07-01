@@ -2,27 +2,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:text="ANTi-URL"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+    android:layout_height="match_parent"
+    android:background="#294d7f">
+    <ImageView
+        android:src="@drawable/logo_v2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:layout_height="150dp"
+        android:id="@+id/img_main_logo" />
     <EditText
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="199.0dp"
-        android:id="@+id/editText1" />
+        android:layout_height="100dp"
+        android:textColor="#000000"
+        android:background="#f7f7f7"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:id="@+id/txt_input_url"
+        android:hint="URL을 입력하세요"
+        android:textColorHint="#999999" />
     <Button
-        android:text="Button"
+        android:text="SEARCH"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#142740"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="24sp"
+        android:id="@+id/btn_launch_vt" />
+    <CheckBox
+        android:text="URL 자동 탐지"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-    <TextView
-        android:text="Will Change"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#f7f7f7"
+        android:textSize="18dp"
+        android:id="@+id/chk_urllistener" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="60dp"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="메뉴"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="50"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:background="#142740"
+            android:textSize="24sp"
+            android:elevation="8dp"
+            android:id="@+id/btn_goto_setting" />
+        <Button
+            android:text="과거 내역"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="50"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#142740"
+            android:textSize="24sp"
+            android:elevation="8dp"
+            android:id="@+id/btn_goto_history" />
+    </LinearLayout>
 </LinearLayout>
