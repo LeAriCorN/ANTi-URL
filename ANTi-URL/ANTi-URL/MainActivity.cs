@@ -27,9 +27,7 @@ namespace ANTi_URL
     [Activity(Label = "Anti-URL")]
     public class MainActivity : Activity
     {
-        private string urlcopy;
         private static string ScanUrl;
-        private static string ScanId;
         static bool hasUrlBeenScannedBefore;
         public static int fcnt;
         public static int total;
@@ -50,47 +48,32 @@ namespace ANTi_URL
             Button btn_launch_vt = FindViewById<Button>(Resource.Id.btn_launch_vt);
             Button btn_goto_setting = FindViewById<Button>(Resource.Id.btn_goto_setting);
             Button btn_goto_history = FindViewById<Button>(Resource.Id.btn_goto_history);
-            CheckBox chk_urllistener = FindViewById<CheckBox>(Resource.Id.chk_urllistener);
+            //CheckBox chk_urllistener = FindViewById<CheckBox>(Resource.Id.chk_urllistener);
 
             db = new Database();
             db.createDataBase();
+            
+            
+            //if (chk_urllistener.Checked)
+            //{
+            //    ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
+            //    clip.PrimaryClipChanged += clipchange;
+            //    //클립보드 리스너
+            //}
 
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("chkbox", FileCreationMode.Private);
-
-            chk_urllistener.Click += (o, e) =>
-            {
-                urlcopy = pref.GetString("sky", "");
-                mtoast.SetText(urlcopy);
-                mtoast.Show();
-            };
-
-            if (chk_urllistener.Checked)
-            {
-                ClipboardManager clip = (ClipboardManager)GetSystemService(Context.ClipboardService);
-                clip.PrimaryClipChanged += clipchange;
-            }
             clipboardautocopy(); //클립보드 복붙 함수
             
-
 
             btn_launch_vt.Click += analyzingURL;
             btn_goto_setting.Click += Btn_goto_setting_Click;
             btn_goto_history.Click += Btn_goto_history_Click;
 
         }
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("chkbox", FileCreationMode.Private);
-            ISharedPreferencesEditor edit = pref.Edit();
-            edit.PutString("sky", "asdfasddf");
 
-        }
-
-        private void clipchange(object sender, EventArgs e)
-        {
-            StartActivity(typeof(Go2App));
-        }
+        //private void clipchange(object sender, EventArgs e)
+        //{
+        //    StartActivity(typeof(Go2App));
+        //}
 
         private void Btn_goto_setting_Click(object sender, System.EventArgs e)
         {
@@ -107,7 +90,7 @@ namespace ANTi_URL
             EditText upeditor = FindViewById<EditText>(Resource.Id.txt_input_url);
 
             ScanUrl = upeditor.Text;
-
+            
             if (chkurl(ScanUrl))
             {
                 ProgressDialog progress = new ProgressDialog(this, Resource.Style.AlertDialogStyle);
@@ -120,13 +103,12 @@ namespace ANTi_URL
                 {
                     runAPI().Wait();
 
-
                     RunOnUiThread(() => { progress.Hide(); URL_Repo(); inputDB(); });
                 })).Start();
             }
             else
             {
-                mtoast.SetText("잘못된 URL을 입력했습니다");
+                mtoast.SetText("  URL을 입력하지 않았거나 \n잘못된 URL을 입력했습니다");
                 mtoast.Show();
             }
 
@@ -141,21 +123,20 @@ namespace ANTi_URL
 
             if (!(clipboard.HasPrimaryClip))
             {
-                // If it does contain data, decide if you can handle the data.
+                //데이터 존재시 핸들링
 
             }
             else if (!(clipboard.PrimaryClipDescription.HasMimeType(Android.Content.ClipDescription.MimetypeTextPlain)))
             {
 
-                // since the clipboard has data but it is not plain text
+                // 클립보드 내 데이터 플레인 텍스트 필터
 
             }
             else
             {
-                //since the clipboard contains plain text.
+                //플레인 텍스트만 추출
                 var item = clipboard.PrimaryClip.GetItemAt(0);
 
-                // Gets the clipboard as text.
                 pData = item.Text;
 
                 if (chkurl(pData))
@@ -208,26 +189,9 @@ namespace ANTi_URL
 
             }
         }
-
-        private static void PrintScan(UrlScanResult scanResult)
-        {
-            Console.WriteLine("Scan ID: " + scanResult.ScanId);
-            Console.WriteLine("Message: " + scanResult.VerboseMsg);
-            Console.WriteLine();
-        }
-
-        private static void PrintScan(ScanResult scanResult)
-        {
-            Console.WriteLine("Scan ID: " + scanResult.ScanId);
-            Console.WriteLine("Message: " + scanResult.VerboseMsg);
-            Console.WriteLine();
-        }
-
+        
         private static void PrintScan(UrlReport urlReport)
         {
-            //Console.WriteLine("Scan ID: " + urlReport.ScanId);
-            //Console.WriteLine("Message: " + urlReport.VerboseMsg);
-
             int temp1 = 0;
 
             fcnt = 0;
@@ -243,7 +207,6 @@ namespace ANTi_URL
                     }
                 }
                 fcnt = temp1;
-                ScanId = urlReport.ScanId;
             }
 
 
@@ -256,32 +219,32 @@ namespace ANTi_URL
             if (fcnt < 3)
             {
                 aTitle = "안전합니다!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : "+fcnt+" / "+total+"\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
             else if (fcnt > 6)
             {
                 aTitle = "불안합니다!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : " + fcnt + " / " + total + "\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
             else if (fcnt > 10)
             {
                 aTitle = "초조합니다!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : " + fcnt + " / " + total + "\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
             else if (fcnt > 20)
             {
                 aTitle = "절망적입니다!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : " + fcnt + " / " + total + "\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
             else if (fcnt > 40)
             {
                 aTitle = "파국입니다!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : " + fcnt + " / " + total + "\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
             else
             {
                 aTitle = "대국적으로 포맷을 하십시오!";
-                aMsg = "탐지 결과 \n" + fcnt + " / " + total;
+                aMsg = "탐지 결과 : " + fcnt + " / " + total + "\n" + "" + total + "개의 검사 중 " + fcnt + "개에서 악성으로 판정";
             }
 
             builder.SetTitle(aTitle);
@@ -291,13 +254,13 @@ namespace ANTi_URL
             builder.Show();
         }
 
+        //DB 입력 부분
         public void inputDB()
         {
             TextView txt_input_url = FindViewById<TextView>(Resource.Id.txt_input_url);
 
             URL_Log log = new URL_Log()
             {
-                //Id = ScanId,
                 Url = txt_input_url.Text,
                 Result = fcnt + " / " + total
             };

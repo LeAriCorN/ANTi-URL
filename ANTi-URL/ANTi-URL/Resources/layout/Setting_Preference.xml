@@ -7,7 +7,7 @@
     <Preference
       android:key="App_ver"
       android:title="앱 버전"
-      android:summary="1.0.0"/>
+      android:summary="0.1.0"/>
     <Preference
       android:key="App_intro"
       android:title="앱 소개"
@@ -17,9 +17,9 @@
       android:title="문의하기"
       android:summary="개발자에게 메일 보내기">
     </Preference>
-    <Preference
+    <!--<Preference
       android:key="OpenSource"
-      android:title="오픈소스 라이센스"/>
+      android:title="오픈소스 라이센스"/>-->
     
     
   </PreferenceCategory>

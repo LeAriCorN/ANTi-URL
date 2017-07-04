@@ -23,7 +23,7 @@ namespace ANTi_URL
             FragmentManager.BeginTransaction().Add(Resource.Id.preferenceframe, new Setting_Fragment()).Commit();
             var tolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(tolbar);
-            ActionBar.Title = "설정";
+            ActionBar.Title = "메뉴";
             ActionBar.SetDisplayShowHomeEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             

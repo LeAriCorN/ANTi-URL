@@ -14,6 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:id="@+id/textView2"
         android:textColor="#5CFFC4" />
     <ScrollView
@@ -23,9 +24,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollView1">
         <TextView
-            android:text="만나서 반갑습니다!\n\n이번에 만든 Anti-URL은 부적절한 어쩌고 저쩌고 아 개졸려 ㅠㅠㅠ"
+            android:text="* Anti-URL은 당신의 URL을 VirusTotal을 활용하여 검사의   결과값을 나타내 줍니다.\n\n* 사용법\n\n 검사를 하려고 하는 URL을 입력합니다.\n\n 이후 결과 값을 기다리면 됩니다. \n\n 과거내역을 통해 이전에 검사한 URL을 확인 할 수 있습니다. \n\n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/textView3"
             android:textColor="#f7f7f7" />
     </ScrollView>
