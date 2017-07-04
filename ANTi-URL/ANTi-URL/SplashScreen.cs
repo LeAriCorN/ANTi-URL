@@ -20,7 +20,7 @@ namespace ANTi_URL
         {
             base.OnCreate(bundle);
 
-            Thread.Sleep(1000);
+            Thread.Sleep(900);
             StartActivity(typeof(MainActivity));
             Finish();
         }
